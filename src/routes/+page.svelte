@@ -4,11 +4,20 @@
 	import { Button } from '$lib/components/ui/button';
 	import { v4 as uuidv4 } from 'uuid';
 	import { goto } from '$app/navigation';
+	import { ChatRole, type ChatData } from '$lib/types/chat';
+	import { deepArrStringify } from '$lib/utils';
 
 	let prompt: string = '';
 
 	const handleAskClick = () => {
 		const chatId = uuidv4();
+		localStorage.setItem(
+			chatId,
+			deepArrStringify([
+				{ role: ChatRole.USER, content: prompt },
+				{ role: ChatRole.ASSISTANT, content: 'answer' }
+			] satisfies Array<ChatData>)
+		);
 		window.confirm(`clicked\nprompt : ${prompt}\nchatId : ${chatId}`) && goto('/chat/' + chatId);
 	};
 </script>
