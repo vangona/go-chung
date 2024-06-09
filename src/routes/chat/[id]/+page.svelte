@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { afterNavigate } from '$app/navigation';
 	import ScrollArea from '$lib/components/ui/scroll-area/scroll-area.svelte';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { LOCALSTORAGE_PREFIX } from '$lib/constants/common';
@@ -16,6 +17,11 @@
 	let isLoading: boolean = false;
 
 	onMount(() => {
+		const localData = localStorage.getItem(LOCALSTORAGE_PREFIX + data.id);
+		chatData = deepArrParse<ChatData>(localData ?? '');
+	});
+
+	afterNavigate(() => {
 		const localData = localStorage.getItem(LOCALSTORAGE_PREFIX + data.id);
 		chatData = deepArrParse<ChatData>(localData ?? '');
 	});
