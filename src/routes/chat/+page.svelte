@@ -29,12 +29,9 @@
 
 <ScrollArea class="h-[80vh]" type="hover">
 	<div class="mx-5 my-1 flex flex-col gap-3">
-		{#if parsedLocalDataArr}
+		{#if parsedLocalDataArr && parsedLocalDataArr.length > 0}
 			{#each parsedLocalDataArr as chatData}
-				<Card.Root
-					class="transition hover:scale-[1.01] hover:cursor-pointer"
-					on:click={() => handleCardClick(getLastChatHistory(chatData).chatId)}
-				>
+				<Card.Root>
 					<Card.Header>
 						<Card.Title>
 							{dayjs(getLastChatHistory(chatData).dttm).format('YYYY.MM.DD')}의 대화 기록
@@ -61,8 +58,17 @@
 							</div>
 						{/each}
 					</Card.Content>
+					<Card.Footer>
+						<button
+							class="btn btn-primary w-full"
+							on:click={() => handleCardClick(getLastChatHistory(chatData).chatId)}
+							>이어서 알아보기</button
+						>
+					</Card.Footer>
 				</Card.Root>
 			{/each}
+		{:else}
+			<div>데이터가 없습니다.</div>
 		{/if}
 	</div>
 </ScrollArea>
