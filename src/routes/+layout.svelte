@@ -1,4 +1,5 @@
-<script context="module">
+<script>
+	import '../app.css';
 	import { getLocaleFromNavigator, init, register, waitLocale } from 'svelte-i18n';
 
 	register('ko', () => import('../locale/ko.json'));
@@ -15,4 +16,7 @@
 </script>
 
 <title>GoChung | 고충</title>
-<slot />
+<slot></slot>
+<slot></slot>
+
+<style></style>
