@@ -43,38 +43,59 @@ const config: Config = {
 		},
 		extend: {
 			colors: {
-				border: 'hsl(var(--border) / <alpha-value>)',
-				input: 'hsl(var(--input) / <alpha-value>)',
-				ring: 'hsl(var(--ring) / <alpha-value>)',
-				background: 'hsl(var(--background) / <alpha-value>)',
-				foreground: 'hsl(var(--foreground) / <alpha-value>)',
 				primary: {
-					DEFAULT: 'hsl(var(--primary) / <alpha-value>)',
-					foreground: 'hsl(var(--primary-foreground) / <alpha-value>)'
+					DEFAULT: '#10b981',
+					foreground: '#f3f4f6'
 				},
+				background: '#fefefe',
+				'background-modal': '#111827',
+				'vontainer-bg': '#ffffff',
+				'header-bg': '#ffffff',
+				stroke: '#d1d5db',
+				'text-disabled': '#d1d5db',
+				'text-primary': '#111827',
+				'text-secondary': '#6B7280',
+				'icon-bg': '#f2f6ff',
+				'primary-rent': '#2563eb',
+				'green-50': '#F2FFF2',
+				'green-300': '#CDF4CD',
+				'green-500': '#22C55D',
+				'purple-50': '#FAF5FF',
+				'purple-100': '#f3e8ff',
+				'purple-400': '#c084fc',
+				'cyan-50': '#ECFEFF',
+				'cyan-300': '#67E8F9',
+				'cyan-400': '#22D3EE',
+				'orange-50': '#FFF0D0',
+				'orange-300': '#FFB775',
+
+				border: 'hsl(var(--border))',
+				input: 'hsl(var(--input))',
+				ring: 'hsl(var(--ring))',
+				foreground: 'hsl(var(--foreground))',
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
-					foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)'
+					DEFAULT: '#34d399',
+					foreground: '#001014'
 				},
 				destructive: {
-					DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
-					foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)'
+					DEFAULT: '#ff0000',
+					foreground: '#f3f4f6'
 				},
 				muted: {
-					DEFAULT: 'hsl(var(--muted) / <alpha-value>)',
-					foreground: 'hsl(var(--muted-foreground) / <alpha-value>)'
+					DEFAULT: 'hsl(var(--muted))',
+					foreground: 'hsl(var(--muted-foreground))'
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent) / <alpha-value>)',
-					foreground: 'hsl(var(--accent-foreground) / <alpha-value>)'
+					DEFAULT: '#a7f3d0',
+					foreground: '#13160f'
 				},
 				popover: {
-					DEFAULT: 'hsl(var(--popover) / <alpha-value>)',
-					foreground: 'hsl(var(--popover-foreground) / <alpha-value>)'
+					DEFAULT: 'hsl(var(--popover))',
+					foreground: 'hsl(var(--popover-foreground))'
 				},
 				card: {
-					DEFAULT: 'hsl(var(--card) / <alpha-value>)',
-					foreground: 'hsl(var(--card-foreground) / <alpha-value>)'
+					DEFAULT: 'hsl(var(--card))',
+					foreground: 'hsl(var(--card-foreground))'
 				}
 			},
 			borderRadius: {

@@ -15,7 +15,8 @@
 	}
 </script>
 
-<title>GoChung | 고충</title>
-<slot></slot>
+<main class="px-10 py-10">
+	<slot></slot>
+</main>
 
 <style></style>
