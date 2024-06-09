@@ -4,7 +4,7 @@
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { LOCALSTORAGE_PREFIX } from '$lib/constants/common';
 	import { ChatRole, type ChatData } from '$lib/types/chat';
-	import { cn, deepArrParse, deepArrStringify } from '$lib/utils';
+	import { checkIsValidPrompt, cn, deepArrParse, deepArrStringify } from '$lib/utils';
 	import { onMount } from 'svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 
@@ -63,6 +63,9 @@
 	};
 
 	const handleSumbit = async () => {
+		if (isLoading || hasNewAnswer) return;
+		if (!checkIsValidPrompt(prompt)) return;
+
 		chatData = chatData?.concat({
 			role: ChatRole.USER,
 			content: prompt,

@@ -5,7 +5,7 @@
 	import { v4 as uuidv4 } from 'uuid';
 	import { goto } from '$app/navigation';
 	import { ChatRole, type ChatData } from '$lib/types/chat';
-	import { deepArrStringify } from '$lib/utils';
+	import { checkIsValidPrompt, deepArrStringify } from '$lib/utils';
 	import { LOCALSTORAGE_PREFIX } from '$lib/constants/common';
 	import { onDestroy, onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
@@ -51,7 +51,8 @@
 	});
 
 	const handleAskClick = async () => {
-		if (!prompt) return;
+		if (isLoading) return;
+		if (!checkIsValidPrompt(prompt)) return;
 
 		const chatId = uuidv4();
 		isLoading = true;
@@ -78,6 +79,10 @@
 		isLoading = false;
 
 		goto('/chat/' + chatId);
+	};
+
+	const handleTextareaKeyup = (e: KeyboardEvent) => {
+		if (e.key === 'Enter') handleAskClick();
 	};
 </script>
 
@@ -110,7 +115,11 @@
 		</div>
 	</div>
 	<div class="flex w-full max-w-[800px] flex-col justify-center gap-2">
-		<Textarea bind:value={prompt} placeholder={askMeAnythingStr[languageIndex]} />
+		<Textarea
+			bind:value={prompt}
+			placeholder={askMeAnythingStr[languageIndex]}
+			on:keyup={handleTextareaKeyup}
+		/>
 		<Button on:click={handleAskClick} class="active:scale-[0.99]">
 			{#key languageIndex}
 				<div transition:slide={{ axis: 'x' }}>{askStr[languageIndex]}</div>

@@ -84,3 +84,7 @@ export const getValuesWithKeySubstring = (substring: string) => {
 	}
 	return matchingValues;
 };
+
+export const checkIsValidPrompt = (prompt: string) => {
+	return Boolean(prompt) && Boolean(prompt.trim());
+};
