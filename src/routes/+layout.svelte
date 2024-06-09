@@ -26,11 +26,11 @@
 
 <main class="h-full">
 	<nav class="fixed right-5 top-5">
-		<Select.Root portal={null}>
+		<Select.Root>
 			<Select.Trigger class="w-[180px]">
 				<Select.Value placeholder="Select a fruit" />
 			</Select.Trigger>
-			<Select.Content>
+			<Select.Content class="z-50">
 				<Select.Group>
 					<Select.Label>Fruits</Select.Label>
 					{#each fruits as fruit}

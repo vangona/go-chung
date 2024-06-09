@@ -2,11 +2,14 @@
 	import { t } from 'svelte-i18n';
 	import { Textarea } from '$lib/components/ui/textarea/index.js';
 	import { Button } from '$lib/components/ui/button';
+	import { v4 as uuidv4 } from 'uuid';
+	import { goto } from '$app/navigation';
 
 	let prompt: string = '';
 
 	const handleAskClick = () => {
-		window.alert(`clicked\nprompt : ${prompt}`);
+		const chatId = uuidv4();
+		window.confirm(`clicked\nprompt : ${prompt}\nchatId : ${chatId}`) && goto('/chat/' + chatId);
 	};
 </script>
 
