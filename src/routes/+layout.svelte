@@ -17,6 +17,5 @@
 
 <title>GoChung | 고충</title>
 <slot></slot>
-<slot></slot>
 
 <style></style>
