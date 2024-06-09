@@ -2,7 +2,7 @@
 	import ScrollArea from '$lib/components/ui/scroll-area/scroll-area.svelte';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { ChatRole, type ChatData } from '$lib/types/chat';
-	import { cn, deepArrParse } from '$lib/utils';
+	import { cn, deepArrParse, deepArrStringify } from '$lib/utils';
 	import { onMount } from 'svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 
@@ -11,17 +11,60 @@
 
 	let chatData: Array<ChatData> | undefined;
 	let prompt: string;
+	let hasNewAnswer: boolean = false;
+	let isLoading: boolean = false;
 
 	onMount(() => {
 		const localData = localStorage.getItem(data.id);
-		console.log(localData);
 		chatData = deepArrParse<ChatData>(localData ?? '');
 	});
+
+	const saveToLocalStorage = () => {
+		if (!chatData) return;
+		const stringifiedChatData = deepArrStringify(chatData);
+		localStorage.setItem(data.id, stringifiedChatData);
+	};
+
+	const getAnswer = async () => {
+		isLoading = true;
+		hasNewAnswer = true;
+		const res = await fetch('http://127.0.0.1:8008/api', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				question: prompt
+			})
+		});
+
+		if (res.status === 200) {
+			const result = await res.json();
+			chatData = chatData?.concat({ role: ChatRole.ASSISTANT, content: result.answer });
+			prompt = '';
+		} else {
+			console.error(res.statusText);
+		}
+
+		isLoading = false;
+		hasNewAnswer = false;
+	};
+
+	const handleSumbit = async () => {
+		chatData = chatData?.concat({ role: ChatRole.USER, content: prompt });
+		await getAnswer();
+		saveToLocalStorage();
+	};
+
+	// keydown 때 입력된 엔터가 반영되지 않도록 keyup 사용
+	const handleTextareaKeyup = (e: KeyboardEvent) => {
+		if (e.key === 'Enter') handleSumbit();
+	};
 </script>
 
 <div class="flex h-full w-full flex-col gap-10">
 	<h1 class="mt-10 text-center text-h4">GoChung</h1>
-	<ScrollArea class="h-[70vh]">
+	<ScrollArea class="h-[60vh]">
 		<div class="flex flex-col gap-2">
 			{#if !chatData}
 				<div>데이터가 없습니다.</div>
@@ -46,9 +89,21 @@
 					</div>
 				{/each}
 			{/if}
+			{#if hasNewAnswer && isLoading}
+				<div class="chat chat-start">
+					<div class="chat-bubble chat-bubble-accent">
+						<span class="loading loading-dots"></span>
+					</div>
+				</div>
+			{/if}
 		</div>
 	</ScrollArea>
-	<div class="fixed bottom-[100px] w-[calc(100vw_-_80px)]">
-		<Textarea bind:value={prompt} placeholder="궁금한거 물어보세요" />
+	<div class="fixed bottom-[100px] flex w-[calc(100vw_-_80px)] flex-col gap-2">
+		<Textarea
+			on:keyup={handleTextareaKeyup}
+			bind:value={prompt}
+			placeholder="궁금한거 물어보세요"
+		/>
+		<button on:click={handleSumbit} class="btn btn-primary w-full">물어보기</button>
 	</div>
 </div>
