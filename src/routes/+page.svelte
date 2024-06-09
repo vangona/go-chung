@@ -6,6 +6,7 @@
 	import { goto } from '$app/navigation';
 	import { ChatRole, type ChatData } from '$lib/types/chat';
 	import { deepArrStringify } from '$lib/utils';
+	import { LOCALSTORAGE_PREFIX } from '$lib/constants/common';
 
 	let prompt: string = '';
 	let isLoading: boolean = false;
@@ -24,19 +25,18 @@
 		});
 
 		const result = await res.json();
-		console.log(result);
 
 		localStorage.setItem(
-			chatId,
+			LOCALSTORAGE_PREFIX + chatId,
 			deepArrStringify([
-				{ role: ChatRole.USER, content: prompt },
-				{ role: ChatRole.ASSISTANT, content: result.answer }
+				{ role: ChatRole.USER, content: prompt, dttm: new Date().toString() },
+				{ role: ChatRole.ASSISTANT, content: result.answer, dttm: new Date().toString() }
 			] satisfies Array<ChatData>)
 		);
 
 		isLoading = false;
 
-		window.confirm(`clicked\nprompt : ${prompt}\nchatId : ${chatId}`) && goto('/chat/' + chatId);
+		goto('/chat/' + chatId);
 	};
 </script>
 

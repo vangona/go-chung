@@ -7,4 +7,5 @@ export enum ChatRole {
 export interface ChatData {
 	role: ChatRole;
 	content: string;
+	dttm: string;
 }
