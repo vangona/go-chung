@@ -73,7 +73,7 @@
 	};
 </script>
 
-<div class="flex h-full w-full flex-col gap-10">
+<div class="flex h-full w-full max-w-[1080px] flex-col gap-10">
 	<h1 class="mt-10 text-center text-h4">GoChung</h1>
 	<ScrollArea class="h-[60vh]">
 		<div class="flex flex-col gap-2">
@@ -109,11 +109,13 @@
 			{/if}
 		</div>
 	</ScrollArea>
-	<div class="fixed bottom-[100px] flex w-[calc(100vw_-_80px)] flex-col gap-2">
+	<div
+		class="desktop:max-w-[1080px] desktop:w-[calc(100vw_-_350px)] fixed bottom-[100px] flex w-[calc(100vw_-_80px)] flex-col gap-2"
+	>
 		<Textarea
 			on:keyup={handleTextareaKeyup}
 			bind:value={prompt}
-			placeholder="궁금한거 물어보세요"
+			placeholder="무엇이든 물어보세요"
 		/>
 		<button on:click={handleSumbit} class="btn btn-primary w-full">물어보기</button>
 	</div>

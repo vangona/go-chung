@@ -5,34 +5,6 @@ const config: Config = {
 	darkMode: ['class'],
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	safelist: ['dark'],
-	daisyui: {
-		themes: [
-			{
-				mytheme: {
-					primary: '#10b981',
-					'primary-content': '#f3f4f6',
-					secondary: '#34d399',
-					'secondary-content': '#001014',
-					accent: '#a7f3d0',
-					'accent-content': '#13160f',
-					neutral: '#d1d5db',
-					'neutral-content': '#101011',
-					'base-100': '#fefefe',
-					'base-200': '#dddddd',
-					'base-300': '#bdbdbd',
-					'base-content': '#161616',
-					info: '#2563eb',
-					'info-content': '#d2e2ff',
-					success: '#059669',
-					'success-content': '#f3f4f6',
-					warning: '#fef08a',
-					'warning-content': '#161407',
-					error: '#ff0000',
-					'error-content': '#f3f4f6'
-				}
-			}
-		]
-	},
 	theme: {
 		container: {
 			center: true,
@@ -42,6 +14,9 @@ const config: Config = {
 			}
 		},
 		extend: {
+			screens: {
+				desktop: '768px'
+			},
 			colors: {
 				primary: {
 					DEFAULT: '#10b981',
@@ -186,6 +161,34 @@ const config: Config = {
 				sans: [...fontFamily.sans]
 			}
 		}
+	},
+	daisyui: {
+		themes: [
+			{
+				mytheme: {
+					primary: '#10b981',
+					'primary-content': '#f3f4f6',
+					secondary: '#34d399',
+					'secondary-content': '#001014',
+					accent: '#a7f3d0',
+					'accent-content': '#13160f',
+					neutral: '#d1d5db',
+					'neutral-content': '#101011',
+					'base-100': '#fefefe',
+					'base-200': '#dddddd',
+					'base-300': '#bdbdbd',
+					'base-content': '#161616',
+					info: '#2563eb',
+					'info-content': '#d2e2ff',
+					success: '#059669',
+					'success-content': '#f3f4f6',
+					warning: '#fef08a',
+					'warning-content': '#161407',
+					error: '#ff0000',
+					'error-content': '#f3f4f6'
+				}
+			}
+		]
 	},
 	plugins: [require('daisyui')]
 };

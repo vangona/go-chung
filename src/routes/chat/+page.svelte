@@ -22,12 +22,11 @@
 	};
 
 	const handleCardClick = (chatId: string) => {
-		console.log(123);
 		goto('/chat/' + chatId);
 	};
 </script>
 
-<ScrollArea class="h-[80vh]" type="hover">
+<ScrollArea class="desktop:h-[90vh] h-[80vh]" type="hover">
 	<div class="mx-5 my-1 flex flex-col gap-3">
 		{#if parsedLocalDataArr && parsedLocalDataArr.length > 0}
 			{#each parsedLocalDataArr as chatData}

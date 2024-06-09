@@ -62,7 +62,7 @@
 		<div class="flex justify-center">한국 살이에 궁금한 것들을 물어보세요.</div>
 	</div>
 	<div class="flex w-full max-w-[800px] flex-col justify-center gap-2">
-		<Textarea bind:value={prompt} placeholder="궁금한거 물어보세요" />
+		<Textarea bind:value={prompt} placeholder="무엇이든 물어보세요" />
 		<Button on:click={handleAskClick} class="active:scale-[0.99]">물어보기</Button>
 	</div>
 </div>

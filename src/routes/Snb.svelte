@@ -1,0 +1,59 @@
+<script lang="ts">
+	import { goto } from '$app/navigation';
+	import { ScrollArea } from '$lib/components/ui/scroll-area';
+	import { Separator } from '$lib/components/ui/separator';
+	import * as Card from '$lib/components/ui/card/index';
+	import { LOCALSTORAGE_PREFIX } from '$lib/constants/common';
+	import { getValuesWithKeySubstring, deepArrParse } from '$lib/utils';
+	import { onMount } from 'svelte';
+	import dayjs from 'dayjs';
+
+	let parsedLocalDataArr: Array<Array<import('$lib/types/chat').ChatData>>;
+	onMount(() => {
+		const localDataArr = getValuesWithKeySubstring(LOCALSTORAGE_PREFIX);
+		parsedLocalDataArr = localDataArr.map((data) =>
+			data.value ? deepArrParse(data.value) : []
+		) as Array<Array<import('$lib/types/chat').ChatData>>;
+	});
+
+	const getLastChatHistory = (chatData: Array<unknown>): import('$lib/types/chat').ChatData => {
+		return chatData[chatData.length - 1] as import('$lib/types/chat').ChatData;
+	};
+
+	const handleCardClick = (chatId: string) => {
+		goto('/chat/' + chatId);
+	};
+</script>
+
+<aside class="desktop:flex hidden w-[320px] flex-col border-r pb-10 pt-5">
+	<header class="flex w-full flex-col gap-2 px-5 pb-5">
+		<h2 class="mb-5 text-h1">GoChung</h2>
+		<a href="/chat" class="btn btn-secondary">홈</a>
+		<a href="/administrative" class="btn btn-secondary">행정사</a>
+	</header>
+	<Separator />
+	<main class="w-full pt-5">
+		{#if parsedLocalDataArr && parsedLocalDataArr.length > 0}
+			<ScrollArea class="h-[75vh] px-5" type="hover">
+				{#each parsedLocalDataArr as chatData}
+					<Card.Root class="mb-2">
+						<Card.Header>
+							<Card.Title class="text-nowrap text-body2">
+								{dayjs(getLastChatHistory(chatData).dttm).format('YYYY.MM.DD')}의 대화 기록
+							</Card.Title>
+						</Card.Header>
+						<Card.Footer>
+							<button
+								class="btn btn-primary w-full"
+								on:click={() => handleCardClick(getLastChatHistory(chatData).chatId)}
+								>이어서 알아보기</button
+							>
+						</Card.Footer>
+					</Card.Root>
+				{/each}
+			</ScrollArea>
+		{:else}
+			<div>데이터가 없습니다.</div>
+		{/if}
+	</main>
+</aside>

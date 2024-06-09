@@ -4,6 +4,8 @@
 	import { getLocaleFromNavigator, init, register, waitLocale } from 'svelte-i18n';
 	import { slide } from 'svelte/transition';
 	import { onMount, onDestroy } from 'svelte';
+	import { page } from '$app/stores';
+	import Snb from './Snb.svelte';
 
 	register('ko', () => import('../locale/ko.json'));
 	register('en', () => import('../locale/en.json'));
@@ -47,7 +49,7 @@
 	}
 </script>
 
-<main class="h-full">
+<main class="flex h-full">
 	<nav class="fixed right-5 top-5">
 		<Select.Root
 			selected={selectedOption}
@@ -82,9 +84,10 @@
 			<Select.Input name="favoriteFruit" />
 		</Select.Root>
 	</nav>
-	<div class="flex h-full w-full flex-col items-center justify-center px-10 py-10">
+	{#if $page.url.pathname !== '/'}
+		<Snb />
+	{/if}
+	<div class="flex h-full w-full items-center justify-center px-10 py-10">
 		<slot></slot>
 	</div>
 </main>
-
-<style></style>
