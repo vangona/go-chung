@@ -8,20 +8,46 @@
 	import { deepArrStringify } from '$lib/utils';
 
 	let prompt: string = '';
+	let isLoading: boolean = false;
 
-	const handleAskClick = () => {
+	const handleAskClick = async () => {
 		const chatId = uuidv4();
+		isLoading = true;
+		const res = await fetch('http://127.0.0.1:8008/api', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				question: prompt
+			})
+		});
+
+		const result = await res.json();
+		console.log(result);
+
 		localStorage.setItem(
 			chatId,
 			deepArrStringify([
 				{ role: ChatRole.USER, content: prompt },
-				{ role: ChatRole.ASSISTANT, content: 'answer' }
+				{ role: ChatRole.ASSISTANT, content: result.answer }
 			] satisfies Array<ChatData>)
 		);
+
+		isLoading = false;
+
 		window.confirm(`clicked\nprompt : ${prompt}\nchatId : ${chatId}`) && goto('/chat/' + chatId);
 	};
 </script>
 
+{#if isLoading}
+	<div
+		class="absolute z-50 flex h-full w-full flex-col items-center justify-center gap-5 bg-black opacity-30"
+	>
+		<span class="loading loading-ring w-20 text-primary"></span>
+		<div class="text-h4 text-white">Loading...</div>
+	</div>
+{/if}
 <div class="flex w-full flex-col justify-center gap-20">
 	<div class="flex flex-col gap-20">
 		<div class="flex flex-col justify-center gap-2">
@@ -31,7 +57,7 @@
 					안녕하세요
 				</div>
 			</div>
-			<div class="text-h1 text-center">GoChung</div>
+			<div class="text-center text-h1">GoChung</div>
 		</div>
 		<div class="flex justify-center">한국 살이에 궁금한 것들을 물어보세요.</div>
 	</div>

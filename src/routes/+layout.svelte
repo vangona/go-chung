@@ -55,9 +55,9 @@
 				value && (selectedOption = value);
 			}}
 		>
-			<Select.Trigger class="w-[180px]">
+			<Select.Trigger class="w-[140px]">
 				<Select.Value asChild>
-					<div class="min-w-[100px] text-body2">
+					<div class="min-w-[80px] text-body4">
 						{#if selectedOption}
 							<div>
 								{selectedOption.label}
@@ -82,7 +82,7 @@
 			<Select.Input name="favoriteFruit" />
 		</Select.Root>
 	</nav>
-	<div class="flex h-full w-full items-center justify-center px-10 py-10">
+	<div class="flex h-full w-full flex-col items-center justify-center px-10 py-10">
 		<slot></slot>
 	</div>
 </main>
