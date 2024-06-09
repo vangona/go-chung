@@ -44,7 +44,8 @@
 			chatData = chatData?.concat({
 				role: ChatRole.ASSISTANT,
 				content: result.answer,
-				dttm: new Date().toString()
+				dttm: new Date().toString(),
+				chatId: data.id
 			});
 			prompt = '';
 		} else {
@@ -59,7 +60,8 @@
 		chatData = chatData?.concat({
 			role: ChatRole.USER,
 			content: prompt,
-			dttm: new Date().toString()
+			dttm: new Date().toString(),
+			chatId: data.id
 		});
 		await getAnswer();
 		saveToLocalStorage();

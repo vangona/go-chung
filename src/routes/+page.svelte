@@ -29,8 +29,8 @@
 		localStorage.setItem(
 			LOCALSTORAGE_PREFIX + chatId,
 			deepArrStringify([
-				{ role: ChatRole.USER, content: prompt, dttm: new Date().toString() },
-				{ role: ChatRole.ASSISTANT, content: result.answer, dttm: new Date().toString() }
+				{ role: ChatRole.USER, content: prompt, dttm: new Date().toString(), chatId },
+				{ role: ChatRole.ASSISTANT, content: result.answer, dttm: new Date().toString(), chatId }
 			] satisfies Array<ChatData>)
 		);
 

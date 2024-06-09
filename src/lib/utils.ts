@@ -70,3 +70,17 @@ export const deepArrParse = <T>(str: string): Array<T> | undefined => {
 	resultArr = resultArr.map((el: string) => JSON.parse(el));
 	return resultArr;
 };
+
+export const getValuesWithKeySubstring = (substring: string) => {
+	const matchingValues = [];
+	for (let i = 0; i < localStorage.length; i++) {
+		const key = localStorage.key(i);
+		if (!key) return matchingValues;
+
+		if (key.includes(substring)) {
+			const value = localStorage.getItem(key);
+			matchingValues.push({ key, value });
+		}
+	}
+	return matchingValues;
+};
