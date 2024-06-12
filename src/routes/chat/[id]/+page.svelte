@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { t } from 'svelte-i18n';
-	import { afterNavigate } from '$app/navigation';
+	import { afterNavigate, goto } from '$app/navigation';
 	import ScrollArea from '$lib/components/ui/scroll-area/scroll-area.svelte';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { LOCALSTORAGE_PREFIX } from '$lib/constants/common';
@@ -8,6 +8,7 @@
 	import { checkIsValidPrompt, cn, deepArrParse, deepArrStringify } from '$lib/utils';
 	import { onMount } from 'svelte';
 	import SvelteMarkdown from 'svelte-markdown';
+	import { toast } from 'svelte-sonner';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -75,6 +76,9 @@
 		});
 		await getAnswer();
 		saveToLocalStorage();
+		toast.success($t('common.administrative.help'), {
+			action: { label: $t('common.button.continue'), onClick: () => goto('/administrative') }
+		});
 	};
 
 	// keydown 때 입력된 엔터가 반영되지 않도록 keyup 사용

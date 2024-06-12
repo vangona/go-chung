@@ -1,5 +1,8 @@
 {
 	"common": {
+		"administrative": {
+			"help": "Bạn có cần giúp đỡ với xử lý hành chính không?"
+		},
 		"category": {
 			"visa": "Visa/Lưu trú",
 			"entrance": "Thông tin xuất nhập cảnh",

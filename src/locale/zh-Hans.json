@@ -1,5 +1,8 @@
 {
 	"common": {
+		"administrative": {
+			"help": "需要行政处理方面的帮助吗？"
+		},
 		"category": {
 			"visa": "签证/居留",
 			"entrance": "出入境信息",

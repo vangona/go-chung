@@ -1,5 +1,8 @@
 {
 	"common": {
+		"administrative": {
+			"help": "行政手続きの支援が必要ですか？"
+		},
 		"category": {
 			"visa": "ビザ/滞在",
 			"entrance": "出入国情報",

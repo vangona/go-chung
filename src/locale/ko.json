@@ -1,5 +1,8 @@
 {
 	"common": {
+		"administrative": {
+			"help": "행정 처리에 도움이 필요하신가요?"
+		},
 		"category": {
 			"visa": "비자/체류",
 			"entrance": "출입국정보",

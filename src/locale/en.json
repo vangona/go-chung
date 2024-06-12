@@ -1,5 +1,8 @@
 {
 	"common": {
+		"administrative": {
+			"help": "Do you need help with administrative processing?"
+		},
 		"category": {
 			"visa": "Visa/Stay",
 			"entrance": "Immigration Information",

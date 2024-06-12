@@ -13,6 +13,8 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { page } from '$app/stores';
 	import Snb from './Snb.svelte';
+	import { Toaster } from '$lib/components/ui/sonner';
+	import { ModeWatcher } from 'mode-watcher';
 
 	register('ko', () => import('../locale/ko.json'));
 	register('en', () => import('../locale/en.json'));
@@ -104,6 +106,8 @@
 			<Snb />
 		{/if}
 		<div class="flex h-full w-full items-start justify-center px-10">
+			<ModeWatcher defaultMode="light" />
+			<Toaster />
 			<slot></slot>
 		</div>
 	</main>
