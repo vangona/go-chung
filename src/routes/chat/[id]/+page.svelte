@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from 'svelte-i18n';
 	import { afterNavigate } from '$app/navigation';
 	import ScrollArea from '$lib/components/ui/scroll-area/scroll-area.svelte';
 	import { Textarea } from '$lib/components/ui/textarea';
@@ -119,8 +120,9 @@
 		</div>
 	</ScrollArea>
 	<div
-		class="desktop:max-w-[1080px] desktop:w-[calc(100vw_-_350px)] fixed bottom-[100px] flex w-[calc(100vw_-_80px)] flex-col gap-2"
+		class="fixed bottom-[100px] flex w-[calc(100vw_-_80px)] flex-col gap-2 desktop:w-[calc(100vw_-_350px)] desktop:max-w-[1080px]"
 	>
+		{$t('page.home.welcome')}
 		<Textarea
 			on:keyup={handleTextareaKeyup}
 			bind:value={prompt}

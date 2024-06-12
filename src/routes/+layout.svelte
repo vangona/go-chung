@@ -1,7 +1,14 @@
 <script lang="ts">
 	import * as Select from '$lib/components/ui/select/index';
 	import '../app.css';
-	import { getLocaleFromNavigator, init, register, waitLocale } from 'svelte-i18n';
+	import {
+		getLocaleFromNavigator,
+		init,
+		register,
+		waitLocale,
+		isLoading,
+		locale
+	} from 'svelte-i18n';
 	import { slide } from 'svelte/transition';
 	import { onMount, onDestroy } from 'svelte';
 	import { page } from '$app/stores';
@@ -49,46 +56,51 @@
 	}
 </script>
 
-<main class="flex h-full">
-	<nav class="fixed right-5 top-5">
-		<Select.Root
-			selected={selectedOption}
-			onSelectedChange={(value) => {
-				value && (selectedOption = value);
-			}}
-		>
-			<Select.Trigger class="w-[140px]">
-				<Select.Value asChild>
-					<div class="min-w-[80px] text-body4">
-						{#if selectedOption}
-							<div>
-								{selectedOption.label}
-							</div>
-						{:else}
-							{#key languageIndex}
-								<div transition:slide>
-									{languageStr[languageIndex]}
+{#if $isLoading}
+	<div>wait...</div>
+{:else}
+	<main class="flex h-full">
+		<nav class="fixed right-5 top-5">
+			<Select.Root
+				selected={selectedOption}
+				onSelectedChange={(value) => {
+					value && locale.set(value.value);
+				}}
+			>
+				<Select.Trigger class="w-[140px]">
+					<Select.Value asChild>
+						<div class="min-w-[80px] text-body4">
+							{#if selectedOption}
+								<div>
+									{selectedOption.label}
 								</div>
-							{/key}
-						{/if}
-					</div>
-				</Select.Value>
-			</Select.Trigger>
-			<Select.Content class="z-50">
-				<Select.Group>
-					{#each languages as language}
-						<Select.Item value={language.value} label={language.label}>{language.label}</Select.Item
-						>
-					{/each}
-				</Select.Group>
-			</Select.Content>
-			<Select.Input name="language" />
-		</Select.Root>
-	</nav>
-	{#if $page.url.pathname !== '/'}
-		<Snb />
-	{/if}
-	<div class="flex h-full w-full items-start justify-center px-10">
-		<slot></slot>
-	</div>
-</main>
+							{:else}
+								{#key languageIndex}
+									<div transition:slide>
+										{languageStr[languageIndex]}
+									</div>
+								{/key}
+							{/if}
+						</div>
+					</Select.Value>
+				</Select.Trigger>
+				<Select.Content class="z-50">
+					<Select.Group>
+						{#each languages as language}
+							<Select.Item value={language.value} label={language.label}
+								>{language.label}</Select.Item
+							>
+						{/each}
+					</Select.Group>
+				</Select.Content>
+				<Select.Input name="language" />
+			</Select.Root>
+		</nav>
+		{#if $page.url.pathname !== '/'}
+			<Snb />
+		{/if}
+		<div class="flex h-full w-full items-start justify-center px-10">
+			<slot></slot>
+		</div>
+	</main>
+{/if}
