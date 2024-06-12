@@ -18,7 +18,10 @@
 		},
 		"select": {
 			"category": "หมวดหมู่",
-			"enable-languages": "ภาษาที่ใช้ได้"
+			"available-languages": "ภาษาที่ใช้ได้"
+		},
+		"input": {
+			"search": "ค้นหา"
 		}
 	},
 	"page": {

@@ -125,8 +125,10 @@
 		<Textarea
 			on:keyup={handleTextareaKeyup}
 			bind:value={prompt}
-			placeholder="무엇이든 물어보세요"
+			placeholder={$t('common.textarea.placeholder')}
 		/>
-		<button on:click={handleSumbit} class="btn btn-primary w-full">물어보기</button>
+		<button on:click={handleSumbit} class="btn btn-primary w-full">
+			{$t('common.button.ask')}</button
+		>
 	</div>
 </div>

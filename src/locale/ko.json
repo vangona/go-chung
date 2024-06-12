@@ -18,7 +18,10 @@
 		},
 		"select": {
 			"category": "카테고리",
-			"enable-languages": "사용가능언어"
+			"available-languages": "사용가능언어"
+		},
+		"input": {
+			"search": "검색"
 		}
 	},
 	"page": {

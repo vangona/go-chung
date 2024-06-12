@@ -16,6 +16,10 @@
 
 	register('ko', () => import('../locale/ko.json'));
 	register('en', () => import('../locale/en.json'));
+	register('ja', () => import('../locale/ja.json'));
+	register('zh-Hans', () => import('../locale/zh-Hans.json'));
+	register('vi', () => import('../locale/vi.json'));
+	register('th', () => import('../locale/th.json'));
 
 	init({
 		fallbackLocale: 'ko',

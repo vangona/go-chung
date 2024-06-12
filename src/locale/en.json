@@ -18,7 +18,10 @@
 		},
 		"select": {
 			"category": "Category",
-			"enable-languages": "Available Languages"
+			"available-languages": "Available Languages"
+		},
+		"input": {
+			"search": "Search"
 		}
 	},
 	"page": {

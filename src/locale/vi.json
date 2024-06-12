@@ -18,7 +18,10 @@
 		},
 		"select": {
 			"category": "Thể loại",
-			"enable-languages": "Ngôn ngữ khả dụng"
+			"available-languages": "Ngôn ngữ khả dụng"
+		},
+		"input": {
+			"search": "Tìm kiếm"
 		}
 	},
 	"page": {

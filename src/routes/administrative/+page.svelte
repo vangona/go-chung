@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from 'svelte-i18n';
 	import ScrollArea from '$lib/components/ui/scroll-area/scroll-area.svelte';
 
 	const dummyData = [
@@ -12,7 +13,7 @@
 			name: '박지혜',
 			content:
 				'젊고 유능한 행정사로, 최신 법규와 정책에 대한 깊은 이해를 바탕으로 고객의 문제를 해결합니다. 국제 무역 및 수출입 관련 업무에 강점.',
-			language: ['ko', 'zh']
+			language: ['ko', 'zh-Hans']
 		},
 		{
 			name: '이정민',
@@ -36,7 +37,7 @@
 			name: '한승훈',
 			content:
 				'부동산 관련 행정 절차 전문가로, 상업용 및 주거용 부동산 거래를 지원합니다. 공증 및 계약서 작성 서비스 제공.',
-			language: ['ko', 'en', 'zh']
+			language: ['ko', 'en', 'zh-Hans']
 		},
 		{
 			name: '송민지',
@@ -55,7 +56,7 @@
 
 <div class="mt-20 flex w-full max-w-[860px] flex-col gap-5">
 	<label class="input input-bordered flex items-center gap-2">
-		<input type="text" class="grow" placeholder="Search" />
+		<input type="text" class="grow" placeholder={$t('common.input.search')} />
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 16 16"
@@ -70,7 +71,7 @@
 	</label>
 	<div class="flex justify-between gap-5 desktop:justify-end">
 		<select class="select select-bordered">
-			<option disabled selected>카테고리</option>
+			<option disabled selected>{$t('common.select.category')}</option>
 			<option>비자/체류</option>
 			<option>출입국정보</option>
 			<option>행정심판</option>
@@ -78,7 +79,7 @@
 			<option>민원 및 복지</option>
 		</select>
 		<select class="select select-bordered">
-			<option disabled selected>사용가능 언어</option>
+			<option disabled selected>{$t('common.select.available-languages')}</option>
 			<option>한국어</option>
 			<option>English</option>
 			<option>简体中文</option>
@@ -92,13 +93,15 @@
 			<div class="grid w-fit grid-cols-1 gap-5 desktop:grid-cols-2">
 				{#each dummyData as data, index}
 					<div class="card card-side bg-base-100 shadow-xl">
-						<figure class="flex h-fit w-[400px] flex-col">
+						<figure class="flex h-fit w-[420px] flex-col">
 							{#await import(`../../lib/asset/image/adminstrative-profile-${index + 1}.webp`) then { default: src }}
 								<img {src} alt="행정사 이미지" />
 							{/await}
-							<div class="flex gap-1 px-3 py-2">
+							<div class="flex flex-wrap gap-1 px-2 py-3">
 								{#each data.language as language}
-									<span class="badge badge-neutral">{language}</span>
+									<span class="badge badge-accent text-overline"
+										>{$t(`common.languages.${language}`)}</span
+									>
 								{/each}
 							</div>
 						</figure>
@@ -106,7 +109,7 @@
 							<h2 class="card-title">{data.name}</h2>
 							<p>{data.content}</p>
 							<div class="card-actions justify-end">
-								<button class="btn btn-primary">상담 신청하기</button>
+								<button class="btn btn-primary">{$t('common.button.consulting')}</button>
 							</div>
 						</div>
 					</div>

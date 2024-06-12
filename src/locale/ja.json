@@ -18,7 +18,10 @@
 		},
 		"select": {
 			"category": "カテゴリー",
-			"enable-languages": "使用可能な言語"
+			"available-languages": "使用可能な言語"
+		},
+		"input": {
+			"search": "検索"
 		}
 	},
 	"page": {

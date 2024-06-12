@@ -18,7 +18,10 @@
 		},
 		"select": {
 			"category": "类别",
-			"enable-languages": "可用语言"
+			"available-languages": "可用语言"
+		},
+		"input": {
+			"search": "搜索"
 		}
 	},
 	"page": {

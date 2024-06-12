@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from 'svelte-i18n';
 	import { getValuesWithKeySubstring, deepArrParse, cn } from '$lib/utils';
 	import { LOCALSTORAGE_PREFIX } from '$lib/constants/common';
 	import { ChatRole, type ChatData } from '$lib/types/chat';
@@ -33,7 +34,8 @@
 				<Card.Root>
 					<Card.Header>
 						<Card.Title>
-							{dayjs(getLastChatHistory(chatData).dttm).format('YYYY.MM.DD')}의 대화 기록
+							{dayjs(getLastChatHistory(chatData).dttm).format('YYYY.MM.DD')}
+							{$t('page.chat.chat-history')}
 						</Card.Title>
 					</Card.Header>
 					<Card.Content>
@@ -61,7 +63,7 @@
 						<button
 							class="btn btn-primary w-full"
 							on:click={() => handleCardClick(getLastChatHistory(chatData).chatId)}
-							>이어서 알아보기</button
+							>{$t('common.button.continue')}</button
 						>
 					</Card.Footer>
 				</Card.Root>
