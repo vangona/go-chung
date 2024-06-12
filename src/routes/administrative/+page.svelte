@@ -2,6 +2,7 @@
 	import { t } from 'svelte-i18n';
 	import ScrollArea from '$lib/components/ui/scroll-area/scroll-area.svelte';
 
+	let searchKeyword: string = '';
 	let selectedCategory: string;
 	let selectedLanguage: string;
 
@@ -67,7 +68,12 @@
 
 <div class="mt-20 flex w-full max-w-[860px] flex-col gap-5">
 	<label class="input input-bordered flex items-center gap-2">
-		<input type="text" class="grow" placeholder={$t('common.input.search')} />
+		<input
+			type="text"
+			class="grow"
+			placeholder={$t('common.input.search')}
+			bind:value={searchKeyword}
+		/>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 16 16"
@@ -103,7 +109,7 @@
 		<div class="flex justify-center">
 			<div class="grid w-fit grid-cols-1 gap-5 desktop:grid-cols-2">
 				{#each dummyData.filter((data) => {
-					return (selectedCategory === 'default' || data.category.includes(selectedCategory)) && (selectedLanguage === 'default' || data.language.includes(selectedLanguage));
+					return (selectedCategory === 'default' || data.category.includes(selectedCategory)) && (selectedLanguage === 'default' || data.language.includes(selectedLanguage)) && (searchKeyword.trim() === '' || data.content.includes(searchKeyword));
 				}) as data, index}
 					<div class="card card-side bg-base-100 shadow-xl">
 						<figure class="flex h-fit w-[420px] flex-col">
