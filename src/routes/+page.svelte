@@ -33,7 +33,7 @@
 	];
 	const askStr = ['물어보기', 'Asking', '询问', '質問する', 'Hỏi', 'ถาม'];
 
-	let roller: number;
+	let roller: number | NodeJS.Timeout;
 
 	onMount(() => {
 		roller = setInterval(() => {

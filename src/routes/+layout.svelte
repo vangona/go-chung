@@ -27,7 +27,7 @@
 	let selectedOption: { label?: string; value: string } | undefined;
 	let languageIndex = 0;
 	let languageStr = ['언어', 'Language', '语言', '言語', 'ngôn ngữ', 'ภาษา'];
-	let roller: number;
+	let roller: number | NodeJS.Timeout;
 
 	onMount(() => {
 		roller = setInterval(() => {
