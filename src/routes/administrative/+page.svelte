@@ -89,7 +89,7 @@
 	</div>
 	<ScrollArea class="flex h-[80vh]">
 		<div class="flex justify-center">
-			<div class="grid w-fit grid-cols-2 gap-5">
+			<div class="grid w-fit grid-cols-1 gap-5 desktop:grid-cols-2">
 				{#each dummyData as data, index}
 					<div class="card card-side bg-base-100 shadow-xl">
 						<figure class="flex h-fit w-[400px] flex-col">
