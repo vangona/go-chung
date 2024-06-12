@@ -15,7 +15,7 @@
 		initialLocale: getLocaleFromNavigator()
 	});
 
-	const fruits = [
+	const languages = [
 		{ value: 'ko', label: '한국어' },
 		{ value: 'en', label: 'English' },
 		{ value: 'zh-Hans', label: '简体中文' },
@@ -76,12 +76,13 @@
 			</Select.Trigger>
 			<Select.Content class="z-50">
 				<Select.Group>
-					{#each fruits as fruit}
-						<Select.Item value={fruit.value} label={fruit.label}>{fruit.label}</Select.Item>
+					{#each languages as language}
+						<Select.Item value={language.value} label={language.label}>{language.label}</Select.Item
+						>
 					{/each}
 				</Select.Group>
 			</Select.Content>
-			<Select.Input name="favoriteFruit" />
+			<Select.Input name="language" />
 		</Select.Root>
 	</nav>
 	{#if $page.url.pathname !== '/'}
