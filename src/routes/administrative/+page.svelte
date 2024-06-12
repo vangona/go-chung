@@ -53,7 +53,7 @@
 	];
 </script>
 
-<div class="mt-10 flex w-full max-w-[860px] flex-col gap-5">
+<div class="mt-20 flex w-full max-w-[860px] flex-col gap-5">
 	<label class="input input-bordered flex items-center gap-2">
 		<input type="text" class="grow" placeholder="Search" />
 		<svg

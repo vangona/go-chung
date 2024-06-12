@@ -1,8 +1,12 @@
+<script>
+	import { Home, MessageCircle, BookUser } from 'lucide-svelte';
+</script>
+
 <slot />
 <div
-	class="desktop:hidden absolute bottom-0 flex h-20 w-full items-center justify-between bg-secondary px-10"
+	class="absolute bottom-0 flex h-20 w-full items-center justify-between bg-secondary px-10 desktop:hidden"
 >
-	<a href="/" class="btn btn-ghost">홈</a>
-	<a href="/chat" class="btn btn-ghost">대화</a>
-	<a href="/administrative" class="btn btn-ghost">행정사</a>
+	<a href="/" class="btn btn-ghost"><Home color="white" /></a>
+	<a href="/chat" class="btn btn-ghost"><MessageCircle color="white" /></a>
+	<a href="/administrative" class="btn btn-ghost"><BookUser color="white" /></a>
 </div>
