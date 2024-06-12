@@ -1,7 +1,29 @@
 {
+	"common": {
+		"languages": {
+			"ko": "한국어",
+			"en": "영어",
+			"ja": "일본어",
+			"zh-Hans": "중국어",
+			"vi": "베트남어",
+			"th": "태국어"
+		},
+		"button": {
+			"ask": "물어보기",
+			"continue": "이어서 알아보기",
+			"consulting": "상담 신청하기"
+		},
+		"textarea": {
+			"placeholder": "무엇이든 물어보세요"
+		},
+		"select": {
+			"category": "카테고리",
+			"enable-languages": "사용가능언어"
+		}
+	},
 	"page": {
-		"home": {
-			"welcome": "안녕하세요."
+		"chat": {
+			"chat-history": " 대화 기록"
 		}
 	}
 }

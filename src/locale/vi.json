@@ -1,0 +1,29 @@
+{
+	"common": {
+		"languages": {
+			"ko": "Tiếng Hàn",
+			"en": "Tiếng Anh",
+			"ja": "Tiếng Nhật",
+			"zh-Hans": "Tiếng Trung",
+			"vi": "Tiếng Việt",
+			"th": "Tiếng Thái"
+		},
+		"button": {
+			"ask": "Hỏi",
+			"continue": "Tiếp tục tìm hiểu",
+			"consulting": "Yêu cầu tư vấn"
+		},
+		"textarea": {
+			"placeholder": "Hãy hỏi bất cứ điều gì"
+		},
+		"select": {
+			"category": "Thể loại",
+			"enable-languages": "Ngôn ngữ khả dụng"
+		}
+	},
+	"page": {
+		"chat": {
+			"chat-history": "Lịch sử trò chuyện"
+		}
+	}
+}

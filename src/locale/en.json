@@ -1,7 +1,29 @@
 {
+	"common": {
+		"languages": {
+			"ko": "Korean",
+			"en": "English",
+			"ja": "Japanese",
+			"zh-Hans": "Chinese",
+			"vi": "Vietnamese",
+			"th": "Thai"
+		},
+		"button": {
+			"ask": "Ask",
+			"continue": "Continue",
+			"consulting": "Request Consulting"
+		},
+		"textarea": {
+			"placeholder": "Ask anything"
+		},
+		"select": {
+			"category": "Category",
+			"enable-languages": "Available Languages"
+		}
+	},
 	"page": {
-		"home": {
-			"welcome": "Hello"
+		"chat": {
+			"chat-history": "Chat History"
 		}
 	}
 }

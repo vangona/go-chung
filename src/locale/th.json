@@ -1,0 +1,29 @@
+{
+	"common": {
+		"languages": {
+			"ko": "ภาษาเกาหลี",
+			"en": "ภาษาอังกฤษ",
+			"ja": "ภาษาญี่ปุ่น",
+			"zh-Hans": "ภาษาจีน",
+			"vi": "ภาษาเวียดนาม",
+			"th": "ภาษาไทย"
+		},
+		"button": {
+			"ask": "ถาม",
+			"continue": "ดำเนินการต่อ",
+			"consulting": "ขอคำปรึกษา"
+		},
+		"textarea": {
+			"placeholder": "ถามอะไรก็ได้"
+		},
+		"select": {
+			"category": "หมวดหมู่",
+			"enable-languages": "ภาษาที่ใช้ได้"
+		}
+	},
+	"page": {
+		"chat": {
+			"chat-history": "ประวัติการแชท"
+		}
+	}
+}

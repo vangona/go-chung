@@ -122,7 +122,6 @@
 	<div
 		class="fixed bottom-[100px] flex w-[calc(100vw_-_80px)] flex-col gap-2 desktop:w-[calc(100vw_-_350px)] desktop:max-w-[1080px]"
 	>
-		{$t('page.home.welcome')}
 		<Textarea
 			on:keyup={handleTextareaKeyup}
 			bind:value={prompt}
