@@ -25,8 +25,8 @@
 	};
 </script>
 
-<aside class="desktop:flex hidden w-[320px] flex-col border-r pb-10 pt-5">
-	<header class="flex w-full flex-col gap-2 px-5 pb-5">
+<aside class="hidden w-[320px] flex-col border-r pb-10 desktop:flex">
+	<header class="my-5 flex w-full flex-col gap-2 px-5">
 		<h2 class="mb-5 text-h1">GoChung</h2>
 		<a href="/chat" class="btn btn-secondary">홈</a>
 		<a href="/administrative" class="btn btn-secondary">행정사</a>

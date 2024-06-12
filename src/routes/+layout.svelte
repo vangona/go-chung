@@ -88,7 +88,7 @@
 	{#if $page.url.pathname !== '/'}
 		<Snb />
 	{/if}
-	<div class="flex h-full w-full items-center justify-center px-10 py-10">
+	<div class="flex h-full w-full items-start justify-center px-10 py-10">
 		<slot></slot>
 	</div>
 </main>
