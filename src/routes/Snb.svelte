@@ -25,7 +25,7 @@
 	};
 </script>
 
-<aside class="hidden w-[320px] flex-col border-r pb-10 desktop:flex">
+<aside class="hidden max-h-full w-[320px] flex-col border-r pb-10 desktop:flex">
 	<header class="my-5 flex w-full flex-col gap-2 px-5">
 		<h2 class="mb-5 text-h1">GoChung</h2>
 		<a href="/chat" class="btn btn-secondary">홈</a>
@@ -34,7 +34,7 @@
 	<Separator />
 	<main class="w-full pt-5">
 		{#if parsedLocalDataArr && parsedLocalDataArr.length > 0}
-			<ScrollArea class="h-[75vh] px-5" type="hover">
+			<ScrollArea class="h-[70vh] px-5" type="hover">
 				{#each parsedLocalDataArr as chatData}
 					<Card.Root class="mb-2">
 						<Card.Header>
