@@ -1,5 +1,12 @@
 {
 	"common": {
+		"category": {
+			"visa": "Visa/Stay",
+			"entrance": "Immigration Information",
+			"judgement": "Administrative Judgement",
+			"life": "Life in Korea",
+			"welfare": "Civil Complaints and Welfare"
+		},
 		"languages": {
 			"ko": "Korean",
 			"en": "English",

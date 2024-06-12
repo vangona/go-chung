@@ -1,5 +1,12 @@
 {
 	"common": {
+		"category": {
+			"visa": "Visa/Lưu trú",
+			"entrance": "Thông tin xuất nhập cảnh",
+			"judgement": "Phán quyết hành chính",
+			"life": "Thông tin cuộc sống tại Hàn Quốc",
+			"welfare": "Khiếu nại dân sự và phúc lợi"
+		},
 		"languages": {
 			"ko": "Tiếng Hàn",
 			"en": "Tiếng Anh",

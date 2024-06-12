@@ -72,20 +72,20 @@
 	<div class="flex justify-between gap-5 desktop:justify-end">
 		<select class="select select-bordered">
 			<option disabled selected>{$t('common.select.category')}</option>
-			<option>비자/체류</option>
-			<option>출입국정보</option>
-			<option>행정심판</option>
-			<option>한국생활정보</option>
-			<option>민원 및 복지</option>
+			<option>{$t('common.category.visa')}</option>
+			<option>{$t('common.category.entrance')}</option>
+			<option>{$t('common.category.judgement')}</option>
+			<option>{$t('common.category.life')}</option>
+			<option>{$t('common.category.welfare')}</option>
 		</select>
 		<select class="select select-bordered">
 			<option disabled selected>{$t('common.select.available-languages')}</option>
-			<option>한국어</option>
-			<option>English</option>
-			<option>简体中文</option>
-			<option>日本語</option>
-			<option>Tiếng</option>
-			<option>แบบไทย</option>
+			<option>{$t('common.languages.ko')}</option>
+			<option>{$t('common.languages.en')}</option>
+			<option>{$t('common.languages.ja')}</option>
+			<option>{$t('common.languages.zh-Hans')}</option>
+			<option>{$t('common.languages.vi')}</option>
+			<option>{$t('common.languages.th')}</option>
 		</select>
 	</div>
 	<ScrollArea class="flex h-[80vh]">

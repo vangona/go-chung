@@ -1,5 +1,12 @@
 {
 	"common": {
+		"category": {
+			"visa": "비자/체류",
+			"entrance": "출입국정보",
+			"judgement": "행정심판",
+			"life": "한국생활정보",
+			"welfare": "민원 및 복지"
+		},
 		"languages": {
 			"ko": "한국어",
 			"en": "영어",

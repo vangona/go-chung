@@ -1,5 +1,12 @@
 {
 	"common": {
+		"category": {
+			"visa": "ビザ/滞在",
+			"entrance": "出入国情報",
+			"judgement": "行政審判",
+			"life": "韓国生活情報",
+			"welfare": "民願及び福祉"
+		},
 		"languages": {
 			"ko": "韓国語",
 			"en": "英語",
