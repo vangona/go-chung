@@ -102,9 +102,9 @@
 	};
 </script>
 
-<div class="flex h-full w-full max-w-[1080px] flex-col gap-10">
+<div class="flex h-full w-full max-w-[1080px] flex-col justify-start gap-10">
 	<h1 class="mt-20 text-center text-h4">GoChung</h1>
-	<ScrollArea class="h-[50vh]" type="always">
+	<ScrollArea class="h-[calc(100vh_-_450px)] desktop:h-[calc(100vh_-_350px)]" type="always">
 		<div class="flex flex-col gap-2">
 			{#if !chatData}
 				<div>데이터가 없습니다.</div>
@@ -138,9 +138,7 @@
 			{/if}
 		</div>
 	</ScrollArea>
-	<div
-		class="fixed bottom-[30px] flex w-[calc(100vw_-_80px)] flex-col gap-2 desktop:w-[calc(100vw_-_350px)] desktop:max-w-[1080px]"
-	>
+	<div class="flex h-[150px] w-full max-w-[1080px] flex-col gap-2">
 		<Textarea
 			on:keyup={handleTextareaKeyup}
 			bind:value={prompt}
