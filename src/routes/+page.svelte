@@ -93,7 +93,9 @@
 		<div class="text-h4 text-white">Loading...</div>
 	</div>
 {/if}
-<div class="flex w-full flex-col items-center justify-center gap-20 self-center">
+<div
+	class="flex w-full flex-col items-center justify-center gap-20 self-center overflow-x-hidden px-10"
+>
 	<div class="flex flex-col gap-20">
 		<div class="flex flex-col justify-center gap-2">
 			<div class="chat chat-start flex translate-x-[120px] justify-center">
