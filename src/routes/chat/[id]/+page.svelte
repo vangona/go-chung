@@ -9,6 +9,7 @@
 	import { onMount } from 'svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	import { toast } from 'svelte-sonner';
+	import { QuestionCategory, type AnswerApi } from '../../../constatns/api';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -54,7 +55,7 @@
 				return;
 			}
 
-			const result = await res.json();
+			const result = (await res.json()) as AnswerApi;
 			chatData = chatData?.concat({
 				role: ChatRole.ASSISTANT,
 				content: result.answer,
@@ -63,9 +64,16 @@
 			});
 			prompt = '';
 
-			toast.success($t('common.administrative.help'), {
-				action: { label: $t('common.button.continue'), onClick: () => goto('/administrative') }
-			});
+			// 답변의 분류가 비자 / 체류, 출입국 증명, 행정 심판 중 하나라면 연결 토스트를 띄워준다.
+			if (
+				result.category === QuestionCategory.VISA ||
+				result.category === QuestionCategory.CERTIFICATE ||
+				result.category === QuestionCategory.ADMINSTRATIVE_APPEAL
+			) {
+				toast.info($t('common.administrative.help'), {
+					action: { label: $t('common.button.continue'), onClick: () => goto('/administrative') }
+				});
+			}
 		} catch (error) {
 			toast.error($t('common.info.error'));
 		}

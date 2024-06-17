@@ -107,7 +107,11 @@
 		{/if}
 		<div class="flex h-full w-full items-start justify-center px-10">
 			<ModeWatcher defaultMode="light" />
-			<Toaster />
+			<Toaster
+				position="bottom-right"
+				richColors
+				toastOptions={{ classes: { toast: 'mr-2 mb-4' } }}
+			/>
 			<slot></slot>
 		</div>
 	</main>
