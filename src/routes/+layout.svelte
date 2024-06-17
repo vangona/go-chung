@@ -106,7 +106,7 @@
 		{#if $page.url.pathname !== '/'}
 			<Snb />
 		{/if}
-		<div class="flex h-full w-full items-start justify-center px-10">
+		<div class="flex h-full w-full">
 			<ModeWatcher defaultMode="light" />
 			<Toaster
 				position="bottom-right"

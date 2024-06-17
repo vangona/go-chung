@@ -2,5 +2,7 @@
 	import MobileGnb from '$lib/components/my/mobile-gnb.svelte';
 </script>
 
-<slot />
+<div class="px-5">
+	<slot />
+</div>
 <MobileGnb />

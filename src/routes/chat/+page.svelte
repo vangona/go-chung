@@ -28,7 +28,7 @@
 </script>
 
 <ScrollArea class="mt-20 h-[80vh] desktop:h-[90vh]">
-	<div class="mx-5 my-1 flex flex-col gap-3">
+	<div class="my-1 flex flex-col gap-3">
 		{#if parsedLocalDataArr && parsedLocalDataArr.length > 0}
 			{#each parsedLocalDataArr as chatData}
 				<Card.Root>

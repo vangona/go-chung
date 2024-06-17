@@ -66,7 +66,7 @@
 	];
 </script>
 
-<div class="mt-20 flex w-full max-w-[860px] flex-col gap-5">
+<div class="flex h-full w-full max-w-[860px] flex-col justify-start gap-5 pt-[100px]">
 	<label class="input input-bordered flex items-center gap-2">
 		<input
 			type="text"
@@ -105,7 +105,7 @@
 			<option value="th">{$t('common.languages.th')}</option>
 		</select>
 	</div>
-	<ScrollArea class="flex h-[80vh]">
+	<ScrollArea class="flex h-[calc(100vh_-_350px)] desktop:h-[calc(100vh_-_250px)] desktop:px-10">
 		<div class="flex justify-center">
 			<div class="grid w-fit grid-cols-1 gap-5 desktop:grid-cols-2">
 				{#each dummyData.filter((data) => {
