@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { t } from 'svelte-i18n';
 	import { afterNavigate, goto } from '$app/navigation';
-	import ScrollArea from '$lib/components/ui/scroll-area/scroll-area.svelte';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { LOCALSTORAGE_PREFIX } from '$lib/constants/common';
 	import { ChatRole, type ChatData } from '$lib/types/chat';
@@ -22,6 +21,17 @@
 	onMount(() => {
 		const localData = localStorage.getItem(LOCALSTORAGE_PREFIX + data.id);
 		chatData = deepArrParse<ChatData>(localData ?? '');
+
+		// setTimeout을 통해서 렌더링 이후에 스크롤이 움직이도록 함. TODO: svelte에서는 dom controll 이슈를 어떻게 해결했을까?
+		setTimeout(() => {
+			const chatScroll = document.querySelector('#chat-detail-scroll');
+			if (chatScroll) {
+				chatScroll.scrollTo({
+					top: chatScroll.scrollHeight + 100,
+					behavior: 'instant'
+				});
+			}
+		});
 	});
 
 	afterNavigate(() => {
@@ -38,6 +48,17 @@
 	const getAnswer = async () => {
 		isLoading = true;
 		hasNewAnswer = true;
+
+		// setTimeout을 통해서 렌더링 이후에 스크롤이 움직이도록 함.
+		setTimeout(() => {
+			const chatScroll = document.querySelector('#chat-detail-scroll');
+			if (chatScroll) {
+				chatScroll.scrollTo({
+					top: chatScroll.scrollHeight + 100,
+					behavior: 'smooth'
+				});
+			}
+		}, 100);
 
 		try {
 			const res = await fetch('http://127.0.0.1:8008/api', {
@@ -92,8 +113,17 @@
 			dttm: new Date().toString(),
 			chatId: data.id
 		});
+
 		await getAnswer();
 		saveToLocalStorage();
+
+		const chatScroll = document.querySelector('#chat-detail-scroll');
+		if (chatScroll) {
+			chatScroll.scrollTo({
+				top: chatScroll.scrollHeight,
+				behavior: 'smooth'
+			});
+		}
 	};
 
 	// keydown 때 입력된 엔터가 반영되지 않도록 keyup 사용
@@ -104,7 +134,10 @@
 
 <div class="flex h-full w-full max-w-[1080px] flex-col justify-start gap-10">
 	<h1 class="mt-20 text-center text-h4">GoChung</h1>
-	<ScrollArea class="h-[calc(100vh_-_450px)] desktop:h-[calc(100vh_-_350px)]" type="always">
+	<div
+		class="h-[calc(100vh_-_450px)] overflow-y-auto desktop:h-[calc(100vh_-_350px)]"
+		id="chat-detail-scroll"
+	>
 		<div class="flex flex-col gap-2">
 			{#if !chatData}
 				<div>데이터가 없습니다.</div>
@@ -130,14 +163,14 @@
 				{/each}
 			{/if}
 			{#if hasNewAnswer && isLoading}
-				<div class="chat chat-start">
+				<div class="chat chat-start" id="answer-wating-bubble">
 					<div class="chat-bubble chat-bubble-accent">
 						<span class="loading loading-dots"></span>
 					</div>
 				</div>
 			{/if}
 		</div>
-	</ScrollArea>
+	</div>
 	<div class="flex h-[150px] w-full max-w-[1080px] flex-col gap-2">
 		<Textarea
 			on:keyup={handleTextareaKeyup}
