@@ -1,7 +1,8 @@
 {
 	"common": {
 		"info": {
-			"error": "エラーが発生しました。"
+			"error": "エラーが発生しました。",
+			"no-data": "データがありません。"
 		},
 		"administrative": {
 			"help": "行政手続きの支援が必要ですか？"

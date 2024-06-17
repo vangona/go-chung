@@ -58,7 +58,9 @@
 				{/each}
 			</ScrollArea>
 		{:else}
-			<div>데이터가 없습니다.</div>
+			<div class="flex w-full justify-center pt-5">
+				{$t('common.info.no-data')}
+			</div>
 		{/if}
 	</main>
 </aside>

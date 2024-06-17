@@ -27,7 +27,7 @@
 	};
 </script>
 
-<ScrollArea class="mt-20 h-[calc(100vh_-_200px)] desktop:h-[calc(100vh_-_100px)]" type="always">
+<ScrollArea class="mt-20 h-[calc(100vh_-_200px)] desktop:h-[calc(100vh_-_100px)]" type="hover">
 	<div class="my-1 flex max-w-[1080px] flex-col gap-3">
 		{#if parsedLocalDataArr && parsedLocalDataArr.length > 0}
 			{#each parsedLocalDataArr as chatData}
@@ -69,7 +69,9 @@
 				</Card.Root>
 			{/each}
 		{:else}
-			<div>데이터가 없습니다.</div>
+			<div>
+				{$t('common.info.no-data')}
+			</div>
 		{/if}
 	</div>
 </ScrollArea>

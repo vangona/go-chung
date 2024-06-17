@@ -1,7 +1,8 @@
 {
 	"common": {
 		"info": {
-			"error": "Đã xảy ra lỗi."
+			"error": "Đã xảy ra lỗi.",
+			"no-data": "Không có dữ liệu."
 		},
 		"administrative": {
 			"help": "Bạn có cần giúp đỡ với xử lý hành chính không?"
