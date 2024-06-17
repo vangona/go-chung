@@ -27,17 +27,17 @@
 	};
 </script>
 
-<aside class="hidden max-h-full w-[320px] flex-col border-r pb-10 desktop:flex">
-	<header class="my-5 flex w-full flex-col gap-2 px-5">
+<aside class="hidden max-h-full w-[320px] flex-col border-r desktop:flex">
+	<header class="my-5 flex h-[300px] w-full flex-col justify-center gap-2 px-5">
 		<h2 class="mb-5 text-h1">GoChung</h2>
 		<a href="/home" class="btn btn-secondary"><Home color="white" /></a>
 		<a href="/chat" class="btn btn-secondary"><MessageCircle color="white" /></a>
 		<a href="/administrative" class="btn btn-secondary"><BookUser color="white" /></a>
 	</header>
 	<Separator />
-	<main class="w-full pt-5">
+	<main class="w-full">
 		{#if parsedLocalDataArr && parsedLocalDataArr.length > 0}
-			<ScrollArea class="h-[70vh] px-5" type="always">
+			<ScrollArea class="h-[calc(100vh_-_300px)] px-5 pt-5" type="always">
 				{#each parsedLocalDataArr as chatData}
 					<Card.Root class="mb-2">
 						<Card.Header>
