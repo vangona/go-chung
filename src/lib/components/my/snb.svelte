@@ -37,7 +37,7 @@
 	<Separator />
 	<main class="w-full pt-5">
 		{#if parsedLocalDataArr && parsedLocalDataArr.length > 0}
-			<ScrollArea class="h-[70vh] px-5" type="hover">
+			<ScrollArea class="h-[70vh] px-5" type="always">
 				{#each parsedLocalDataArr as chatData}
 					<Card.Root class="mb-2">
 						<Card.Header>

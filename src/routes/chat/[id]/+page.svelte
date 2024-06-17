@@ -104,7 +104,7 @@
 
 <div class="flex h-full w-full max-w-[1080px] flex-col gap-10">
 	<h1 class="mt-20 text-center text-h4">GoChung</h1>
-	<ScrollArea class="h-[50vh]">
+	<ScrollArea class="h-[50vh]" type="always">
 		<div class="flex flex-col gap-2">
 			{#if !chatData}
 				<div>데이터가 없습니다.</div>

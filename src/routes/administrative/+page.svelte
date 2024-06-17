@@ -105,7 +105,10 @@
 			<option value="th">{$t('common.languages.th')}</option>
 		</select>
 	</div>
-	<ScrollArea class="flex h-[calc(100vh_-_350px)] desktop:h-[calc(100vh_-_250px)] desktop:px-10">
+	<ScrollArea
+		class="flex h-[calc(100vh_-_350px)] desktop:h-[calc(100vh_-_250px)] desktop:px-10"
+		type="always"
+	>
 		<div class="flex justify-center">
 			<div class="grid w-fit grid-cols-1 gap-5 desktop:grid-cols-2">
 				{#each dummyData.filter((data) => {
