@@ -61,7 +61,7 @@
 		}, 100);
 
 		try {
-			const res = await fetch('http://127.0.0.1:8008/api', {
+			const res = await fetch('/api', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'

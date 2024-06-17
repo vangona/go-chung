@@ -116,9 +116,7 @@
 				}) as data, index}
 					<div class="card card-side bg-base-100 shadow-xl">
 						<figure class="flex h-fit w-[420px] flex-col">
-							{#await import(`../../lib/asset/image/adminstrative-profile-${index + 1}.webp`) then { default: src }}
-								<img {src} alt="행정사 이미지" />
-							{/await}
+							<img src={`/image/adminstrative-profile-${index + 1}.webp`} alt="행정사 이미지" />
 							<div class="flex flex-wrap gap-1 px-2 py-3">
 								{#each data.language as language}
 									<span class="badge badge-accent text-overline"
