@@ -63,13 +63,14 @@
 </script>
 
 {#if $isLoading}
-	<div>wait...</div>
+	<div class="flex h-full w-full items-center justify-center">wait...</div>
 {:else}
-	<main class="flex h-full">
-		<nav class="fixed right-5 top-5">
+	<main class="relative flex h-full w-full">
+		<nav class="absolute right-5 top-5">
 			<Select.Root
 				selected={selectedOption}
 				onSelectedChange={(value) => {
+					selectedOption = value ? { label: value.label, value: value.value } : undefined;
 					value && locale.set(value.value);
 				}}
 			>
