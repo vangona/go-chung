@@ -12,7 +12,7 @@
 	import { slide } from 'svelte/transition';
 	import { onMount, onDestroy } from 'svelte';
 	import { page } from '$app/stores';
-	import Snb from './Snb.svelte';
+	import Snb from '$lib/components/my/snb.svelte';
 	import { Toaster } from '$lib/components/ui/sonner';
 	import { ModeWatcher } from 'mode-watcher';
 
