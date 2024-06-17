@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { t } from 'svelte-i18n';
 	import { Textarea } from '$lib/components/ui/textarea/index.js';
 	import { Button } from '$lib/components/ui/button';
 	import { v4 as uuidv4 } from 'uuid';
@@ -94,7 +93,7 @@
 		<div class="text-h4 text-white">Loading...</div>
 	</div>
 {/if}
-<div class="mt-[300px] flex w-full flex-col items-center justify-center gap-20">
+<div class="mt-[200px] flex w-full flex-col items-center justify-center gap-20">
 	<div class="flex flex-col gap-20">
 		<div class="flex flex-col justify-center gap-2">
 			<div class="chat chat-start flex translate-x-[120px] justify-center">

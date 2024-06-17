@@ -1,5 +1,8 @@
 {
 	"common": {
+		"info": {
+			"error": "An error has occurred."
+		},
 		"administrative": {
 			"help": "Do you need help with administrative processing?"
 		},

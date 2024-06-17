@@ -1,5 +1,8 @@
 {
 	"common": {
+		"info": {
+			"error": "오류가 발생했습니다."
+		},
 		"administrative": {
 			"help": "행정 처리에 도움이 필요하신가요?"
 		},

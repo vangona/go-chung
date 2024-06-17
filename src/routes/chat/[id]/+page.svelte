@@ -37,17 +37,23 @@
 	const getAnswer = async () => {
 		isLoading = true;
 		hasNewAnswer = true;
-		const res = await fetch('http://127.0.0.1:8008/api', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				question: prompt
-			})
-		});
 
-		if (res.status === 200) {
+		try {
+			const res = await fetch('http://127.0.0.1:8008/api', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					question: prompt
+				})
+			});
+
+			if (res.status !== 200) {
+				toast.error($t('common.info.error') + ', ' + res.status);
+				return;
+			}
+
 			const result = await res.json();
 			chatData = chatData?.concat({
 				role: ChatRole.ASSISTANT,
@@ -56,8 +62,12 @@
 				chatId: data.id
 			});
 			prompt = '';
-		} else {
-			console.error(res.statusText);
+
+			toast.success($t('common.administrative.help'), {
+				action: { label: $t('common.button.continue'), onClick: () => goto('/administrative') }
+			});
+		} catch (error) {
+			toast.error($t('common.info.error'));
 		}
 
 		isLoading = false;
@@ -76,9 +86,6 @@
 		});
 		await getAnswer();
 		saveToLocalStorage();
-		toast.success($t('common.administrative.help'), {
-			action: { label: $t('common.button.continue'), onClick: () => goto('/administrative') }
-		});
 	};
 
 	// keydown 때 입력된 엔터가 반영되지 않도록 keyup 사용
@@ -88,8 +95,8 @@
 </script>
 
 <div class="flex h-full w-full max-w-[1080px] flex-col gap-10">
-	<h1 class="mt-10 text-center text-h4">GoChung</h1>
-	<ScrollArea class="h-[60vh]">
+	<h1 class="mt-20 text-center text-h4">GoChung</h1>
+	<ScrollArea class="h-[50vh]">
 		<div class="flex flex-col gap-2">
 			{#if !chatData}
 				<div>데이터가 없습니다.</div>
@@ -124,7 +131,7 @@
 		</div>
 	</ScrollArea>
 	<div
-		class="fixed bottom-[100px] flex w-[calc(100vw_-_80px)] flex-col gap-2 desktop:w-[calc(100vw_-_350px)] desktop:max-w-[1080px]"
+		class="fixed bottom-[30px] flex w-[calc(100vw_-_80px)] flex-col gap-2 desktop:w-[calc(100vw_-_350px)] desktop:max-w-[1080px]"
 	>
 		<Textarea
 			on:keyup={handleTextareaKeyup}

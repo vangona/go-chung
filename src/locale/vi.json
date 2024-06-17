@@ -1,5 +1,8 @@
 {
 	"common": {
+		"info": {
+			"error": "Đã xảy ra lỗi."
+		},
 		"administrative": {
 			"help": "Bạn có cần giúp đỡ với xử lý hành chính không?"
 		},

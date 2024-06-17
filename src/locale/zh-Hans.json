@@ -1,5 +1,8 @@
 {
 	"common": {
+		"info": {
+			"error": "发生错误。"
+		},
 		"administrative": {
 			"help": "需要行政处理方面的帮助吗？"
 		},
