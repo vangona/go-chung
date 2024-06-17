@@ -7,6 +7,8 @@
 	import { getValuesWithKeySubstring, deepArrParse } from '$lib/utils';
 	import { onMount } from 'svelte';
 	import dayjs from 'dayjs';
+	import { t } from 'svelte-i18n';
+	import { BookUser, Home, MessageCircle } from 'lucide-svelte';
 
 	let parsedLocalDataArr: Array<Array<import('$lib/types/chat').ChatData>>;
 	onMount(() => {
@@ -28,8 +30,9 @@
 <aside class="hidden max-h-full w-[320px] flex-col border-r pb-10 desktop:flex">
 	<header class="my-5 flex w-full flex-col gap-2 px-5">
 		<h2 class="mb-5 text-h1">GoChung</h2>
-		<a href="/chat" class="btn btn-secondary">홈</a>
-		<a href="/administrative" class="btn btn-secondary">행정사</a>
+		<a href="/home" class="btn btn-secondary"><Home color="white" /></a>
+		<a href="/chat" class="btn btn-secondary"><MessageCircle color="white" /></a>
+		<a href="/administrative" class="btn btn-secondary"><BookUser color="white" /></a>
 	</header>
 	<Separator />
 	<main class="w-full pt-5">
@@ -39,14 +42,16 @@
 					<Card.Root class="mb-2">
 						<Card.Header>
 							<Card.Title class="text-nowrap text-body2">
-								{dayjs(getLastChatHistory(chatData).dttm).format('YYYY.MM.DD')}의 대화 기록
+								{dayjs(getLastChatHistory(chatData).dttm).format('YYYY.MM.DD')}
+								{$t('page.chat.chat-history')}
 							</Card.Title>
 						</Card.Header>
 						<Card.Footer>
 							<button
 								class="btn btn-primary w-full"
 								on:click={() => handleCardClick(getLastChatHistory(chatData).chatId)}
-								>이어서 알아보기</button
+							>
+								{$t('common.button.continue')}</button
 							>
 						</Card.Footer>
 					</Card.Root>
